@@ -1,0 +1,39 @@
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    operations-sorter: alpha
+    tags-sorter: alpha
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+  packages-to-scan: com.inca.tachyon.shop
+
+spring:
+  datasource:
+    url: 'jdbc:log4jdbc:mariadb://localhost:3306/antv'
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    username: antv
+    password: '!incasys0'
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate:
+      ddl-auto: validate
+logging:
+  level:
+    web: TRACE
+    org.springframework.web: TRACE
+jwt:
+  key:
+    secret: "3E218AFB9FF576AFB2F81700A630528BCC0AE57367AA08CFAB0536683AA714C9"
+  access-token-expiration-minutes: 5
+  refresh-token-expiration-minutes: 420
+
+mybatis:
+  mapper-locations: "classpath:/mapper/**/*.xml"
+  type-aliases-package: com.inca.antv.mapper
+  configuration:
+    map-underscore-to-camel-case: true

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.inca.tachyon.shop.app.user.repository.UserRepository">
+    <insert id="insertUser" parameterType="com.inca.tachyon.shop.app.user.entity.User" keyProperty="userNo" useGeneratedKeys="true">
+        insert into user (
+            email,
+            password,
+            updated_at,
+            created_at
+        ) values (
+            #{email},
+            #{password},
+            now(),
+            now()
+        )
+    </insert>
+
+    <select id="selectUserOne" parameterType="String" resultType="com.inca.tachyon.shop.app.user.entity.User">
+        select
+            user_no,
+            email,
+            password,
+            updated_at,
+            created_at
+        from
+            user
+        where
+            email = #{value}
+    </select>
+</mapper>
